@@ -28,12 +28,12 @@
       background: radial-gradient(circle at top, var(--bg2), var(--bg1));
       font-family: system-ui, sans-serif;
       overflow: auto;
-      padding: 40px 10px 60px; /* increased top padding so card sits lower */
+      padding: 100px 10px 60px; /* increased top padding so card sits noticeably lower */
     }
 
     .card {
-      width: min(650px, 90vw);
-      padding: 20px 20px 40px 20px;
+      width: min(720px, 86vw);
+      padding: 28px 24px 48px 24px;
       background: var(--card);
       border-radius: 22px;
       text-align: center;
@@ -157,10 +157,10 @@
     @media (min-width: 900px) {
       /* Prefer `zoom` where available for a true "browser zoom" effect. */
       body {
-        zoom: 0.8;
-        -webkit-transform: scale(0.8);
+        zoom: 0.85;
+        -webkit-transform: scale(0.85);
         -webkit-transform-origin: top center;
-        -moz-transform: scale(0.8);
+        -moz-transform: scale(0.85);
         -moz-transform-origin: top center;
         transform-origin: top center;
       }
