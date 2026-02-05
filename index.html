@@ -167,10 +167,23 @@
     }
 
     noBtn.addEventListener("mouseover", teleportNo);
+    // Support click for mouse and keyboard users
+    noBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      teleportNo();
+    });
+    // Use pointerdown to reliably detect touch interactions
+    noBtn.addEventListener("pointerdown", (e) => {
+      if (e.pointerType === 'touch') {
+        e.preventDefault();
+        teleportNo();
+      }
+    });
+    // Keep touchstart fallback for older browsers; preventDefault to avoid generating a subsequent click
     noBtn.addEventListener("touchstart", (e) => {
         e.preventDefault();
         teleportNo();
-    });
+    }, { passive: false });
 
     yesBtn.addEventListener("click", () => {
       // SWAP THE IMAGE HERE
