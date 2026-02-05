@@ -60,11 +60,12 @@
     .button-zone {
       position: relative;
       width: 100%;
-      height: 200px;
+      height: 220px;
       margin: 0 auto;
       touch-action: none;
-      overflow: hidden; 
+      overflow: visible;
       border-radius: 15px;
+      padding: 8px; /* give a little breathing room on small screens */
     }
 
     button {
@@ -154,15 +155,22 @@
     function teleportNo() {
       const zoneRect = zone.getBoundingClientRect();
       const noRect = noBtn.getBoundingClientRect();
-      
-      const newLeft = Math.random() * (zoneRect.width - noRect.width);
-      const newTop = Math.random() * (zoneRect.height - noRect.height);
 
+      // Keep some padding so buttons don't sit flush to the edges
+      const padding = 12;
+      const maxX = Math.max(0, zoneRect.width - 2 * padding);
+      const maxY = Math.max(0, zoneRect.height - 2 * padding);
+
+      const newLeft = padding + Math.random() * maxX;
+      const newTop = padding + Math.random() * maxY;
+
+      // Keep the translate centering so the button's center is at (left, top)
       noBtn.style.left = newLeft + "px";
       noBtn.style.top = newTop + "px";
-      noBtn.style.transform = "none";
+      noBtn.style.transform = "translate(-50%, -50%)";
 
-      yesScale = Math.min(3.5, yesScale + 0.2);
+      // Reduce growth so the Yes button doesn't become huge on small screens
+      yesScale = Math.min(1.6, yesScale + 0.12);
       yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
     }
 
