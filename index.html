@@ -22,11 +22,13 @@
       margin: 0;
       min-height: 100svh;
       display: grid;
-      place-items: center;
+      /* place card closer to the top so there's more space at the bottom */
+      align-items: start;
+      justify-items: center;
       background: radial-gradient(circle at top, var(--bg2), var(--bg1));
       font-family: system-ui, sans-serif;
       overflow: auto;
-      padding: 10px;
+      padding: 20px 10px 60px; /* more bottom padding than top */
     }
 
     .card {
